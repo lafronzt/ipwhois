@@ -23,6 +23,7 @@ type Client struct {
 	HTTPClient *http.Client // HTTP client for API requests.
 }
 
+// NewClient returns a new Client for the Free Version of the API.
 func NewClient() *Client {
 	return &Client{
 		url:        FreeURL,
@@ -30,6 +31,8 @@ func NewClient() *Client {
 	}
 }
 
+// NewClientPro returns a new Client for the Pro Version of the API.
+// You must provide your API key for the Pro Version.
 func NewClientPro(apiKey string) *Client {
 	return &Client{
 		url:        ProURL,

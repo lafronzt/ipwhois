@@ -1,5 +1,7 @@
 package ipwhois
 
+// IPDetails is the struct for the details of an IP address.
+// See https://ipwhois.io/documentation for more information.
 type IPDetails struct {
 	IP                string  `json:"ip,omitempty"`                 // IP address used for the query
 	Success           bool    `json:"success,omitempty"`            // Indicates if the query was successful. true or false
@@ -39,6 +41,9 @@ type Options struct {
 	Language string   `url:"lang"`          // Language localizes city, region, country and continent names. Defaults to English. Other Options: "en", "ru", "de", "es", "pt-br", "fr", "zh-cn", "ja"
 }
 
+// GetIPDetails returns the details for an IP address.
+// See https://ipwhois.io/documentation for more information.
+// It returns a pointer to the IPDetails struct.
 func (c *Client) GetIPDetails(ip *string, opts *Options) (*IPDetails, error) {
 	raw, err := c.get(ip, &opts)
 	if err != nil {
