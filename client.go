@@ -64,8 +64,6 @@ func (c *Client) get(address *string, queryMap interface{}) (string, error) {
 		url = fmt.Sprintf("%s?%s", url, queryParams.Encode())
 	}
 
-	fmt.Printf("URL: %s\n", url)
-
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		log.Println(err)

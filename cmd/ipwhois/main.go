@@ -32,12 +32,7 @@ func main() {
 		return
 	}
 
-	opts := ipwhois.Options{
-		Objects:  []string{},
-		Language: "",
-	}
-
-	whois, err := c.GetIPDetails(IP, &opts)
+	whois, err := c.GetIPDetails(IP, nil)
 	if err != nil {
 		println(err.Error())
 		return
