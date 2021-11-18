@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	IP *string = flag.String("ip", "", "IP address to lookup")
+	ip *string = flag.String("ip", "", "IP address to lookup")
 	c  *ipwhois.Client
 )
 
@@ -27,12 +27,12 @@ func init() {
 func main() {
 	flag.Parse()
 
-	if *IP == "" {
+	if *ip == "" {
 		flag.Usage()
 		return
 	}
 
-	whois, err := c.GetIPDetails(IP, nil)
+	whois, err := c.GetIPDetails(ip, nil)
 	if err != nil {
 		println(err.Error())
 		return
