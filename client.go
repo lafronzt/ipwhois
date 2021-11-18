@@ -12,14 +12,14 @@ import (
 
 var (
 	// Base URL for the whois API
-	FreeURL = "https://ipwhois.app/json/"
-	ProURL  = "https://ipwhois.pro/json/"
+	FreeURL = "https://ipwhois.app/json/" // FreeURL is the URL of the Free API Serivice, exported so it can be changed if needed.
+	ProURL  = "https://ipwhois.pro/json/" // ProURL is the URL of the Pro (Paid) API Serivice, exported so it can be changed if needed
 )
 
 // Client is the client for the ipwhois API
 type Client struct {
 	url        string       // Base URL for API requests. Will default to Free if there is no API Key provided in the client setup
-	apiKey     string       // API key for Nomics API. Not requried for the free version.
+	apiKey     string       // API key for Nomics API. Not required for the free version.
 	HTTPClient *http.Client // HTTP client for API requests.
 }
 
