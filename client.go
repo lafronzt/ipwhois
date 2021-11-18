@@ -92,9 +92,10 @@ func (c *Client) get(address *string, queryMap interface{}) (string, error) {
 
 	if resp.StatusCode == http.StatusOK {
 		return bodyString, nil
-	} else {
-		log.Println(resp.Status)
-		log.Println(bodyString)
-		return "", fmt.Errorf("%s", resp.Status)
 	}
+	
+	log.Println(resp.Status)
+	log.Println(bodyString)
+	
+	return "", fmt.Errorf("%s", resp.Status)
 }
