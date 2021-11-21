@@ -7,7 +7,7 @@
 Install and Use in Command Line:
 
 ```bash
-go install github.com/lafronzt/ipwhois/cmd/ipwhois
+go install github.com/lafronzt/ipwhois/cmd/ipwhois@latest
 
 ipwhois -ip 1.1.1.1
 ```
