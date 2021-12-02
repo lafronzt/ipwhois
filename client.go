@@ -6,15 +6,27 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/google/go-querystring/query"
 )
 
 var (
 	// Base URL for the whois API
-	FreeURL = "https://ipwhois.app/json/" // FreeURL is the URL of the Free API Serivice, exported so it can be changed if needed.
+	FreeURL = "http://ipwhois.app/json/"  // FreeURL is the URL of the Free API Serivice, exported so it can be changed if needed.
 	ProURL  = "https://ipwhois.pro/json/" // ProURL is the URL of the Pro (Paid) API Serivice, exported so it can be changed if needed
 )
+
+// This allows the end user to overwrite the default URLs for the API.
+func init() {
+	if fromEnv := os.Getenv("ipwhois_free_url"); fromEnv != "" {
+		FreeURL = fromEnv
+	}
+
+	if fromEnv := os.Getenv("ipwhois_pro_url"); fromEnv != "" {
+		ProURL = fromEnv
+	}
+}
 
 // Client is the client for the ipwhois API
 type Client struct {
@@ -93,9 +105,9 @@ func (c *Client) get(address *string, queryMap interface{}) (string, error) {
 	if resp.StatusCode == http.StatusOK {
 		return bodyString, nil
 	}
-	
+
 	log.Println(resp.Status)
 	log.Println(bodyString)
-	
+
 	return "", fmt.Errorf("%s", resp.Status)
 }
